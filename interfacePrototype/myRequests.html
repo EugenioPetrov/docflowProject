@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <!-- Data tables -->
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+
+    <title>Contracts validation</title>
+</head>
+<body>
+    
+    <!-- Nav bar, which is the same for all pages -->
+    <nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-dark">
+        <a class="navbar-brand" href="https://docflow.decathlon.ru/">Docflow</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="./index.html">Home</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">My requests</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./validation.html">Validation (Contracts)</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Help</a>
+                </li>
+            </ul>
+            <form method="post" id="logoutForm" class="ml-auto" action="/Account/Logout">
+                <ul class="nav navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a title="Manage" class="nav-link" href="/Manage">evgeniy.petrov@decathlon.com</a>
+                    </li>
+                    <li class="nav-item">
+                        <button type="submit" class="btn btn-link nav-item navbar-link">Log out</button>
+                    </li>
+                </ul>
+            </form>
+        </div>
+    </nav>
+
+    <!-- Container for the whole body content -->
+    <div class="container body-content p-3">
+
+            <table id="myRequests" class="display" style="width:100%">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Request ID</th>
+                        <th>Request date</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>OOO Mir 000001</td>
+                        <td>REQ-000001</td>
+                        <td>10/06/2018</td>
+                        <td>Submitted / Initial processing by lawyer</td>
+                    </tr>
+                    <tr>
+                        <td>OOO Mir 000002</td>
+                        <td>REQ-000002</td>
+                        <td>10/09/2018</td>
+                        <td>Initial processing completed / On validation: Accountant</td>
+                    </tr>
+                </tbody>
+            </table>
+
+    <!-- This section is for modal demo -->
+    <h5>Modal window DEMO:</h5>
+
+    <!-- Buttons -->
+    <div class="btn-group" role="group" aria-label="Basic example">
+        <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#requestDetails">Request details</button>
+    </div>
+    <!-- Modals -->
+    <!-- Request details -->
+    <div class="modal fade" id="requestDetails" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title" id="exampleModalLabel">Request for a Contract validation</h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="card bg-light w-100">
+                        <div class="card-body p-2">
+                            <h5 class="card-title">Request details</h5>
+                        </div>
+                        <ul class="list-group">
+                            <li class="list-group-item">Request ID: REQ-000001 <br>
+                                Request name: OOO Mir 000001 <br>
+                                Company: Octoblue <br>
+                                Tax ID of the supplier: 5257129386 <br>
+                                Initiator: employee@decathlon.com <br>
+                                <b>Status: Submitted / Initial processing by lawyer</b> <br>
+                                Contract attached: <a href="#" class="card-link">Contract.docx</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+    <!-- Footer, which is the same for all pages -->
+    <footer class="bd-footer p-2">
+        <div class="container border-top border-secondary">
+        <span class="h6">© 2018 - Docflow</span>
+        </div>
+    </footer>
+    </div>
+
+    <script>
+    $(document).ready(function() {
+    $('#myRequests').DataTable( {
+        "order": [[ 3, "desc" ]]
+        } );
+    } );
+    </script>
+
+    <!-- jQuery first (disabled, already added with data tables), then Popper.js, then Bootstrap JS -->
+
+    <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+</body>
+</html>
